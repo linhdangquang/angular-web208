@@ -3,21 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductsComponent } from './pages/products/products.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
-import { NavigationComponent } from './components/navigation/navigation.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
-  declarations: [AppComponent, ProductsComponent, NavigationComponent, DashboardComponent],
+  declarations: [AppComponent,  AdminComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,
     NgbModule,
     MaterialModule,
     BrowserAnimationsModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent],
