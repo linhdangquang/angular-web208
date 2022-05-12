@@ -1,36 +1,27 @@
+import { IProduct } from './../../../models/Product';
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroupDirective,
-  NgForm,
-  Validators,
-} from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
 
-/** Error when invalid control is dirty, touched, or submitted. */
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(
-    control: FormControl | null,
-    form: FormGroupDirective | NgForm | null
-  ): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(
-      control &&
-      control.invalid &&
-      (control.dirty || control.touched || isSubmitted)
-    );
-  }
-}
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
 })
-export class ProductsComponent {
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
+export class ProductsComponent implements OnInit {
+  titlePage:string = 'Products';
+  isStatus:boolean = false;
+  inputValue:string = ''
+  productsList: IProduct[] = [
+    { id: 1, name: 'Product 1', price: 100 },
+    { id: 2, name: 'Product 2', price: 200 },
+    { id: 3, name: 'Product 3', price: 300 },
+  ];
+  changeStatus() {
+    this.isStatus = !this.isStatus;
+  }
+  removeProduct(id: number) {
+    this.productsList = this.productsList.filter((product) => product.id !== id);
+  }
+  constructor() {}
 
-  matcher = new MyErrorStateMatcher();
+  ngOnInit(): void {}
 }

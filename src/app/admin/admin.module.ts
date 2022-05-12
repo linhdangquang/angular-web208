@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent, ProductsComponent } from './pages';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ DashboardComponent, ProductsComponent],
@@ -12,6 +13,7 @@ import { DashboardComponent, ProductsComponent } from './pages';
     AdminRoutingModule,
     BrowserModule,
     NgbModule,
+    FormsModule,
     MaterialModule,
     BrowserAnimationsModule,
   ],
