@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent, ProductsComponent } from './pages';
 import { FormsModule } from '@angular/forms';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @NgModule({
   declarations: [ DashboardComponent, ProductsComponent],

@@ -9,6 +9,7 @@ import { Component} from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent  {
+  panelOpenState = false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),

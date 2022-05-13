@@ -95,6 +95,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
     ScrollingModule,
     FormsModule,
     ReactiveFormsModule,
+    MatPaginatorModule
   ]
 })
 export class MaterialModule {}
