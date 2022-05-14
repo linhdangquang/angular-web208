@@ -1,5 +1,5 @@
 import { IProduct } from './../../../models/Product';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -10,15 +10,6 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements AfterViewInit {
-  titlePage: string = 'Products';
-  inputValue: string = '';
-  displayedColumns: string[] = ['id', 'name', 'price', 'actions'];
-  @ViewChild(MatPaginator) paginator: any;
-  @ViewChild(MatSort) sort: any;
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
   productsList: IProduct[] = [
     { id: 1, name: 'Product 1', price: 100 },
     { id: 2, name: 'Product 2', price: 200 },
@@ -32,17 +23,31 @@ export class ProductsComponent implements AfterViewInit {
     { id: 10, name: 'Product 10', price: 1000 },
     { id: 11, name: 'Product 11', price: 1100 },
   ];
+  titlePage: string = 'Products';
+  displayedColumns: string[] = ['id', 'name', 'price', 'actions'];
+  productDetail!: IProduct;
+  @ViewChild(MatPaginator) paginator: any;
+  @ViewChild(MatSort) sort: any;
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+  
   dataSource: MatTableDataSource<IProduct> = new MatTableDataSource(
     this.productsList
   );
 
   constructor() {}
-    
+
   removeProduct(product: IProduct) {
     this.dataSource.data = this.dataSource.data
       .filter((item) => item.id !== product.id)
       .map((item, index) => ({ ...item, id: index + 1 }));
     console.log(product);
+  }
+  onHandleView(product: IProduct) {
+    console.log(product);
+    this.productDetail = product;
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

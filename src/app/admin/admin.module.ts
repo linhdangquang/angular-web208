@@ -1,3 +1,4 @@
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './../material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -6,10 +7,10 @@ import { NgModule } from '@angular/core';
 import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent, ProductsComponent } from './pages';
 import { FormsModule } from '@angular/forms';
-import { MatIconRegistry } from '@angular/material/icon';
+import { AddProductComponent } from './components/add-product/add-product.component';
 
 @NgModule({
-  declarations: [ DashboardComponent, ProductsComponent],
+  declarations: [ DashboardComponent, ProductsComponent, ProductDetailComponent, AddProductComponent],
   imports: [
     AdminRoutingModule,
     BrowserModule,
