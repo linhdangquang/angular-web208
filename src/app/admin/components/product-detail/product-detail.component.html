@@ -1,5 +1,34 @@
 <div *ngIf="product">
-  <h1>
-    {{product.name}}
-  </h1>
+  <mat-card class="w-50">
+    <mat-card-header>
+      <mat-card-title>
+        <h1>{{ product.name }}</h1>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="grid-container">
+        <div class="grid-item">
+          <img
+            class="w-100"
+            [src]="'https://vnn-imgs-f.vgcloud.vn/2020/10/21/10/huracan-la-mo-t-trong-nhu-ng-ma-u-xe-de-p-nha-t-cu-a-lamborghini-a-nh-autocar.jpg'"
+            alt="{{ product.name }}"
+          />
+        </div>
+        <div class="grid-item">
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, sunt obcaecati. Perspiciatis accusantium ea velit delectus laborum, porro ullam totam?</p>
+          <p>
+            <strong>Price:</strong> {{ product.price | currency }}
+          </p>
+          <p>
+            <strong>Category:</strong> Cars
+          </p>
+          <p>
+            <strong>Available:</strong> Ok
+          </p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  
+
 </div>

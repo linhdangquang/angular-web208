@@ -1,8 +1,8 @@
 <div>
   <h1>{{ titlePage }}</h1>
-  <app-add-product></app-add-product>
+  <app-add-product (createProduct)="onHandleAdd($event)"></app-add-product>
   <app-product-detail [product]="productDetail"></app-product-detail>
-  <!-- <a routerLink="../products/add" class="btn btn-primary">Add</a> -->
+  <a routerLink="../products/add" class="btn btn-primary">Add</a>
   <div class="shadow">
     <mat-form-field appearance="standard" class="w-100 px-2">
       <mat-label> Search </mat-label>
