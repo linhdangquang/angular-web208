@@ -1,9 +1,9 @@
-import { IProduct } from './../../../models/Product';
+import { IProduct } from '../../../models/product.model';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { ProductsService } from 'src/app/products.service';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-products',
@@ -13,8 +13,13 @@ import { ProductsService } from 'src/app/products.service';
 export class ProductsComponent implements AfterViewInit, OnInit {
   productsList!: IProduct[];
   titlePage: string = 'Products';
-  displayedColumns: string[] = ['id', 'name', 'price', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'price' , 'actions'];
   productDetail!: IProduct;
+  dataSource: MatTableDataSource<IProduct> = new MatTableDataSource(this.productsList);
+  constructor(
+    private productsService: ProductsService
+  ) {}
+
   @ViewChild(MatPaginator) paginator: any;
   @ViewChild(MatSort) sort: any;
   ngAfterViewInit(): void {
@@ -22,17 +27,11 @@ export class ProductsComponent implements AfterViewInit, OnInit {
     this.dataSource.sort = this.sort;
   }
   ngOnInit(): void {
-    this.getProducts();
+    this.productsService.getProductsRequest().subscribe((data: any) => {
+      this.productsList = data;
+      this.dataSource.data = this.productsList;
+    });
   }
-
-  dataSource!: MatTableDataSource<IProduct>;
-  getProducts(): void {
-    this.productsService.getProducts().subscribe(products => {
-      this.productsList = products;
-      this.dataSource = new MatTableDataSource(this.productsList);
-    })
-  }
-  constructor(private productsService: ProductsService) {}
 
   removeProduct(product: IProduct) {
     this.dataSource.data = this.dataSource.data
@@ -41,10 +40,10 @@ export class ProductsComponent implements AfterViewInit, OnInit {
     console.log(product);
   }
   onHandleAdd(product: IProduct) {
-    this.dataSource.data = [
-      ...this.dataSource.data,
-      { ...product, id: this.dataSource.data.length + 1 },
-    ];
+    this.productsService.postProductRequest(product).subscribe((data: any) => {
+      this.productsList.push(data);
+      this.dataSource.data = this.productsList;
+    })
   }
   onHandleView(product: IProduct) {
     console.log(product);

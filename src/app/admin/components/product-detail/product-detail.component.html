@@ -10,12 +10,12 @@
         <div class="grid-item">
           <img
             class="w-100"
-            [src]="'https://vnn-imgs-f.vgcloud.vn/2020/10/21/10/huracan-la-mo-t-trong-nhu-ng-ma-u-xe-de-p-nha-t-cu-a-lamborghini-a-nh-autocar.jpg'"
+            src={{product.image}}
             alt="{{ product.name }}"
           />
         </div>
         <div class="grid-item">
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, sunt obcaecati. Perspiciatis accusantium ea velit delectus laborum, porro ullam totam?</p>
+          <p>{{product.description}}</p>
           <p>
             <strong>Price:</strong> {{ product.price | currency }}
           </p>

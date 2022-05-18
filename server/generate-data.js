@@ -11,8 +11,6 @@ for (let i = 1; i <= 50; i++) {
     name: faker.commerce.productName(),
     price: faker.commerce.price(),
     description: faker.lorem.sentence(),
-    image: faker.image.image(),
+    image: faker.image.food(),
   })
 }
-
-console.log(JSON.stringify(database))
