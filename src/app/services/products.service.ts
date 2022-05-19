@@ -30,6 +30,10 @@ export class ProductsService {
     return this.httpClient.get(this.REST_API_SERVER);
   }
 
+  public getProductRequest(id: number): Observable<IProduct> {
+    return this.httpClient.get<IProduct>(`${this.REST_API_SERVER}/${id}`);
+  }
+
   public postProductRequest(product: IProduct): Observable<IProduct> {
     return this.httpClient.post<IProduct>(this.REST_API_SERVER, product).pipe(
       tap((data: IProduct) =>

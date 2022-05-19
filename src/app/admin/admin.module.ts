@@ -1,3 +1,4 @@
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './../material.module';
@@ -18,6 +19,8 @@ import { AddProductComponent } from './components/add-product/add-product.compon
     FormsModule,
     MaterialModule,
     BrowserAnimationsModule,
+    NgxSkeletonLoaderModule,
+
   ],
   providers: [],
 })

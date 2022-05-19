@@ -45,10 +45,6 @@ export class ProductsComponent implements AfterViewInit, OnInit {
       this.dataSource.data = this.productsList;
     })
   }
-  onHandleView(product: IProduct) {
-    console.log(product);
-    this.productDetail = product;
-  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

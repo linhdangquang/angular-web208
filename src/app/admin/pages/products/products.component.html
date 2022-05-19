@@ -1,7 +1,6 @@
 <div>
   <h1>{{ titlePage }}</h1>
   <app-add-product (createProduct)="onHandleAdd($event)"></app-add-product>
-  <app-product-detail [product]="productDetail"></app-product-detail>
   <a routerLink="../products/add" class="btn btn-primary">Add</a>
   <div class="shadow">
     <mat-form-field appearance="standard" class="w-100 px-2">
@@ -41,7 +40,7 @@
               mat-menu-item
               matTooltip="View product"
               matTooltipPosition="right"
-              (click)="onHandleView(product)"
+              [routerLink]="['/admin/products/view', product.id]"
             >
               <mat-icon>remove_red_eye</mat-icon>
               <span>View</span>

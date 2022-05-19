@@ -8,27 +8,27 @@
     <mat-card-content>
       <div class="grid-container">
         <div class="grid-item">
+          <ngx-skeleton-loader
+            count="10"
+            *ngIf="!imageLoaded"
+            appearance="line"
+            animation="progress"
+          >
+          </ngx-skeleton-loader>
           <img
-            class="w-100"
-            src={{product.image}}
+            [src]="product.image"
             alt="{{ product.name }}"
+            class="w-100"
+            (load)="checkImageLoaded()"
           />
         </div>
         <div class="grid-item">
-          <p>{{product.description}}</p>
-          <p>
-            <strong>Price:</strong> {{ product.price | currency }}
-          </p>
-          <p>
-            <strong>Category:</strong> Cars
-          </p>
-          <p>
-            <strong>Available:</strong> Ok
-          </p>
+          <p>{{ product.description }}</p>
+          <p><strong>Price:</strong> {{ product.price | currency }}</p>
+          <p><strong>Category:</strong> Cars</p>
+          <p><strong>Available:</strong> Ok</p>
         </div>
       </div>
     </mat-card-content>
   </mat-card>
-  
-
 </div>

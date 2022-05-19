@@ -10,6 +10,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminModule } from './admin/admin.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [AppComponent,  AdminComponent],
@@ -20,6 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
     NgbModule,
     MaterialModule,
     BrowserAnimationsModule,
+    NgxSkeletonLoaderModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',
