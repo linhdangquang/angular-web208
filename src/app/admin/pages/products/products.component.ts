@@ -13,12 +13,12 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductsComponent implements AfterViewInit, OnInit {
   productsList!: IProduct[];
   titlePage: string = 'Products';
-  displayedColumns: string[] = ['id', 'name', 'price' , 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'price', 'actions'];
   productDetail!: IProduct;
-  dataSource: MatTableDataSource<IProduct> = new MatTableDataSource(this.productsList);
-  constructor(
-    private productsService: ProductsService
-  ) {}
+  dataSource: MatTableDataSource<IProduct> = new MatTableDataSource(
+    this.productsList
+  );
+  constructor(private productsService: ProductsService) {}
 
   @ViewChild(MatPaginator) paginator: any;
   @ViewChild(MatSort) sort: any;
@@ -29,22 +29,27 @@ export class ProductsComponent implements AfterViewInit, OnInit {
   ngOnInit(): void {
     this.productsService.getProductsRequest().subscribe((data: any) => {
       this.productsList = data;
-      this.dataSource.data = this.productsList;
+      this.dataSource.data = this.productsList.map((item, idx) => ({
+        ...item,
+        index: idx + 1,
+      }));
     });
   }
 
   removeProduct(product: IProduct) {
-    this.dataSource.data = this.dataSource.data
-      .filter((item) => item.id !== product.id)
-      .map((item, index) => ({ ...item, id: index + 1 }));
-    console.log(product);
+    this.productsService
+      .deleteProductRequest(product.id as number)
+      .subscribe(() => {
+        this.productsList = this.productsList.filter(
+          (item) => item.id !== product.id
+        );
+        this.dataSource.data = this.productsList.map((item, idx) => ({
+          ...item,
+          index: idx + 1,
+        }));
+      });
   }
-  onHandleAdd(product: IProduct) {
-    this.productsService.postProductRequest(product).subscribe((data: any) => {
-      this.productsList.push(data);
-      this.dataSource.data = this.productsList;
-    })
-  }
+  
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

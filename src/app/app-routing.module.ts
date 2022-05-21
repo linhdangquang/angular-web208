@@ -1,9 +1,11 @@
+import { Page404Component } from './utils/page404/page404.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/admin/dashboard', pathMatch: 'full' },
+  // {path: '404', component: Page404Component},
+  // { path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({

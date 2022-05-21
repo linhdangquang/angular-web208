@@ -1,3 +1,4 @@
+import { Page404Component } from './../utils/page404/page404.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { DashboardComponent, ProductsComponent } from './pages';
@@ -11,7 +12,7 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: DashboardComponent },
+      { path: 'dashboard', component: DashboardComponent},
       {
         path: 'products',
         component: ProductsComponent,
@@ -22,11 +23,12 @@ const routes: Routes = [
       },
       {
         path: 'products/view/:id',
-        component: ProductDetailComponent
-      }
+        component: ProductDetailComponent,
+      },
     ],
   },
-  
+  {path: '404', component: Page404Component},
+  { path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({

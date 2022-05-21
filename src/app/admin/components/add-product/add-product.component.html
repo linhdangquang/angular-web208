@@ -1,25 +1,45 @@
-<form (ngSubmit)="onSubmit()" #formAdd="ngForm">
-  <div class="mb-3">
-    <label for="formGroupExampleInput" class="form-label">Name</label>
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Example input placeholder"
-      [(ngModel)]="product.name"
-      name="name"
-    />
-  </div>
-  <div class="mb-3">
-    <label for="formGroupExampleInput2" class="form-label">Price</label>
-    <input
-      type="number"
-      class="form-control"
-      placeholder="Another input placeholder"
-      [(ngModel)]="product.price"
-      name="price"
-    />
-  </div>
-  <div class="mb-3">
-    <button class="btn btn-success">add</button>
-  </div>
-</form>
+<div class="shadow product-form">
+  <form (ngSubmit)="onHandleAdd()" #formAdd="ngForm" class="d-flex flex-column">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Product name"
+        [(ngModel)]="product.name"
+        name="name"
+      />
+      <button
+        *ngIf="product.name"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="product.name = ''"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Price</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Product price"
+        [(ngModel)]="product.price"
+        name="price"
+      />
+      <button
+        *ngIf="product.price"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="product.price = 0"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <div class="mb-3">
+      <button class="btn btn-success">add</button>
+    </div>
+  </form>
+</div>

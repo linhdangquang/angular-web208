@@ -295,20 +295,6 @@
       "image": "http://loremflickr.com/640/480/abstract"
     },
     {
-      "id": 43,
-      "name": "Electronic Rubber Towels",
-      "price": "887.00",
-      "description": "Ut a qui repellendus voluptas molestias itaque.",
-      "image": "http://loremflickr.com/640/480/cats"
-    },
-    {
-      "id": 44,
-      "name": "Handmade Cotton Towels",
-      "price": "378.00",
-      "description": "Quo non in dolor debitis.",
-      "image": "http://loremflickr.com/640/480/abstract"
-    },
-    {
       "id": 45,
       "name": "Awesome Concrete Fish",
       "price": "947.00",
@@ -330,13 +316,6 @@
       "image": "http://loremflickr.com/640/480/cats"
     },
     {
-      "id": 48,
-      "name": "Luxurious Plastic Ball",
-      "price": "843.00",
-      "description": "Incidunt aut aliquam quos distinctio sunt temporibus similique est dicta.",
-      "image": "http://loremflickr.com/640/480/sports"
-    },
-    {
       "id": 49,
       "name": "Ergonomic Wooden Bacon",
       "price": "531.00",
@@ -344,11 +323,9 @@
       "image": "http://loremflickr.com/640/480/city"
     },
     {
-      "id": 50,
-      "name": "Luxurious Soft Chips",
-      "price": "743.00",
-      "description": "Nulla consectetur debitis dolor quia non.",
-      "image": "http://loremflickr.com/640/480/food"
+      "name": "8778",
+      "price": 8899,
+      "id": 50
     }
   ]
 }

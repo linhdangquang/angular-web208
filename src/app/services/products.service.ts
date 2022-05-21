@@ -44,4 +44,13 @@ export class ProductsService {
       catchError(this.handleError)
     );
   }
+
+  public deleteProductRequest(id: number): Observable<IProduct> {
+    return this.httpClient.delete<IProduct>(`${this.REST_API_SERVER}/${id}`).pipe(
+      tap(() =>
+        this.toastr.success(`Product has been deleted successfully`)
+      ),
+      catchError(this.handleError)
+    );
+  }
 }

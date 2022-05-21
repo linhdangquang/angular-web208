@@ -1,0 +1,20 @@
+.product-form {
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: #fff;
+  max-width: 650px;
+}
+
+
+@media screen and (max-width: 500px) {
+  .product-form {
+    padding: 10px;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .product-form {
+    max-width: 1000px;;    
+  }
+}

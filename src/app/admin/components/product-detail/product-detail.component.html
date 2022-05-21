@@ -20,6 +20,7 @@
             alt="{{ product.name }}"
             class="w-100"
             (load)="checkImageLoaded()"
+            (error)="handleMissingImage($event)"
           />
         </div>
         <div class="grid-item">

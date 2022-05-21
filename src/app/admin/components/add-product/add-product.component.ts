@@ -1,22 +1,24 @@
+import { Router} from '@angular/router';
+import { ProductsService } from 'src/app/services/products.service';
 import { IProduct } from '../../../models/product.model';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css']
+  styleUrls: ['./add-product.component.css'],
 })
 export class AddProductComponent implements OnInit {
-  @Output() createProduct = new EventEmitter<IProduct>();
   product: IProduct = {
-    name : '',
-    price : 0,
+    name: '',
+    price: 0,
+  };
+  constructor(private productsService: ProductsService, private router: Router) {}
+  ngOnInit(): void {}
+  
+  onHandleAdd() {
+    this.productsService.postProductRequest(this.product).subscribe(() => {
+      this.router.navigate(['admin/products']);
+    });
   }
-  constructor() { }
-  onSubmit() {
-    this.createProduct.emit(this.product);
-  }
-  ngOnInit(): void {
-  }
-
 }
