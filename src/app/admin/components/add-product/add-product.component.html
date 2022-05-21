@@ -1,45 +1,64 @@
-<div class="shadow product-form">
-  <form (ngSubmit)="onHandleAdd()" #formAdd="ngForm" class="d-flex flex-column">
-    <mat-form-field appearance="fill">
-      <mat-label>Name</mat-label>
-      <input
-        type="text"
-        matInput
-        placeholder="Product name"
-        [(ngModel)]="product.name"
-        name="name"
-      />
-      <button
-        *ngIf="product.name"
-        matSuffix
-        mat-icon-button
-        aria-label="Clear"
-        (click)="product.name = ''"
+<div class="col-lg-6">
+  <mat-card>
+    <mat-card-title>
+      <h2>Add Product</h2>
+    </mat-card-title>
+    <mat-card-content>
+      <form
+        (ngSubmit)="onHandleAdd()"
+        [formGroup]="productForm"
+        #formAdd="ngForm"
+        class="d-flex flex-column"
       >
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Price</mat-label>
-      <input
-        type="text"
-        matInput
-        placeholder="Product price"
-        [(ngModel)]="product.price"
-        name="price"
-      />
-      <button
-        *ngIf="product.price"
-        matSuffix
-        mat-icon-button
-        aria-label="Clear"
-        (click)="product.price = 0"
-      >
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
-    <div class="mb-3">
-      <button class="btn btn-success">add</button>
-    </div>
-  </form>
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Product name"
+            formControlName="name"
+            name="name"
+          />
+          <mat-error *ngIf="!productForm.hasError('required') && !productForm.get('name')?.value.length">
+            Name is <strong>required</strong> 
+          </mat-error>
+          <mat-error *ngIf="!productForm.hasError('minlength') && productForm.get('name')?.value">
+            Name is at least <strong>6 characters</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Price</mat-label>
+          <input
+            type="number"
+            matInput
+            placeholder="Product price"
+            formControlName="price"
+            name="price"
+          />
+          <mat-error *ngIf="!productForm.hasError('required') && !productForm.get('price')?.value">
+            Price is <strong>required</strong> 
+          </mat-error>
+          <mat-error *ngIf="!productForm.hasError('min') && productForm.get('price')?.value < 0">
+            Name is at least <strong>1</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea
+            type="text"
+            matInput
+            placeholder="Description"
+            formControlName="description"
+            name="price"
+          >
+          </textarea>
+        </mat-form-field>
+        <div class="mb-3 d-grid justify-content-end ">
+          <button mat-raised-button color="primary" [disabled]="productForm.invalid" class="text-uppercase">
+            add
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>

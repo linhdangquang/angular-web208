@@ -1,18 +1,30 @@
 <div>
-  <h1>{{ titlePage }}</h1>
-  <a routerLink="../products/add" class="btn btn-primary">Add</a>
   <div class="shadow">
-    <mat-form-field appearance="standard" class="w-100 px-2">
-      <mat-label> Search </mat-label>
-      <input matInput (keyup)="applyFilter($event)" #input />
+    <div class="d-flex justify-content-between align-items-center p-2 pb-0">
+      <h1>{{ titlePage }}</h1>
+      <button
+        mat-stroked-button
+        color="primary"
+        [routerLink]="['/admin/products/add']"
+      >
+        <mat-icon>add</mat-icon>
+        Add Product
+      </button>
+    </div>
+    <mat-form-field appearance="standard" class="w-100 px-3">
+      <mat-label >
+        <mat-icon class="fs-5" >search</mat-icon>
+      </mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input placeholder="Type your product" />
     </mat-form-field>
+
     <table mat-table [dataSource]="dataSource" matSort class="w-100">
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="fw-bolder">
           ID
         </th>
         <td mat-cell *matCellDef="let product" class="fw-bolder">
-          {{ product.index}}
+          {{ product.index }}
         </td>
       </ng-container>
 

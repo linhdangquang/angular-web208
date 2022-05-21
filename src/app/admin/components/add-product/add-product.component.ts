@@ -2,6 +2,7 @@ import { Router} from '@angular/router';
 import { ProductsService } from 'src/app/services/products.service';
 import { IProduct } from '../../../models/product.model';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-product',
@@ -13,11 +14,20 @@ export class AddProductComponent implements OnInit {
     name: '',
     price: 0,
   };
+  productForm = new FormGroup({
+    name: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    price: new FormControl('', [Validators.required, Validators.min(1)]),
+    description: new FormControl(''),
+  })
+  
   constructor(private productsService: ProductsService, private router: Router) {}
   ngOnInit(): void {}
   
   onHandleAdd() {
-    this.productsService.postProductRequest(this.product).subscribe(() => {
+    if (this.productForm.invalid) {
+      return;
+    }
+    this.productsService.postProductRequest(this.productForm.value).subscribe(() => {
       this.router.navigate(['admin/products']);
     });
   }

@@ -7,7 +7,7 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
   >
-    <mat-toolbar class="fw-bolder">Menu</mat-toolbar>
+    <mat-toolbar class="fw-bolder">LinhDQ</mat-toolbar>
     <mat-nav-list>
       <a
         mat-list-item
@@ -17,11 +17,11 @@
           exact: true
         }"
       >
-        <mat-icon aria-hidden="false">home</mat-icon>
+        <mat-icon aria-hidden="false" class="fs-5 d-flex align-items-center">home</mat-icon>
         <span class="nav-text">Dashboard</span>
       </a>
       <a mat-list-item routerLink="products" routerLinkActive="active" >
-        <mat-icon aria-hidden="false">shopping_cart</mat-icon>
+        <mat-icon aria-hidden="false" class="fs-5 d-flex align-items-center">shopping_cart</mat-icon>
         Products
       </a>
     </mat-nav-list>
@@ -37,7 +37,7 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Hello</span>
+      <span>Hello, Your Name</span>
     </mat-toolbar>
     <!-- Content -->
     <div class="grid-container">

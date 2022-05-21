@@ -12,6 +12,8 @@
 
 .sidenav .mat-toolbar {
   background: inherit;
+  font-family: 'Pattaya', sans-serif;
+  font-size:xx-large;
 }
 
 .mat-toolbar.mat-primary {

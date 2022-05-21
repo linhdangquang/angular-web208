@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { IProduct } from '../../../models/product.model';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
@@ -18,7 +19,9 @@ export class ProductsComponent implements AfterViewInit, OnInit {
   dataSource: MatTableDataSource<IProduct> = new MatTableDataSource(
     this.productsList
   );
-  constructor(private productsService: ProductsService) {}
+  constructor(private productsService: ProductsService, private titleService: Title) {
+    this.titleService.setTitle(this.titlePage);
+  }
 
   @ViewChild(MatPaginator) paginator: any;
   @ViewChild(MatSort) sort: any;
