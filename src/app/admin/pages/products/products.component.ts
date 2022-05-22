@@ -1,3 +1,4 @@
+import { DialogService } from './../../../services/dialog.service';
 import { Title } from '@angular/platform-browser';
 import { IProduct } from '../../../models/product.model';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
@@ -5,7 +6,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ProductsService } from 'src/app/services/products.service';
-
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -15,11 +15,14 @@ export class ProductsComponent implements AfterViewInit, OnInit {
   productsList!: IProduct[];
   titlePage: string = 'Products';
   displayedColumns: string[] = ['id', 'name', 'price', 'actions'];
-  productDetail!: IProduct;
   dataSource: MatTableDataSource<IProduct> = new MatTableDataSource(
     this.productsList
   );
-  constructor(private productsService: ProductsService, private titleService: Title) {
+  constructor(
+    private productsService: ProductsService,
+    private titleService: Title,
+    private dialogService: DialogService
+  ) {
     this.titleService.setTitle(this.titlePage);
   }
 
@@ -52,9 +55,24 @@ export class ProductsComponent implements AfterViewInit, OnInit {
         }));
       });
   }
-  
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  deleteDialog(product: IProduct) {
+    this.dialogService
+      .confirmDialog({
+        title: 'Delete Product',
+        message: `Are you sure you want to delete this product?`,
+        confirmCaption: 'Yes, delete it!',
+        cancelCaption: 'No',
+      })
+      .subscribe((result) => {
+        if (result) {
+          this.removeProduct(product);
+        }
+      });
   }
 }

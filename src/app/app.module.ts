@@ -1,3 +1,4 @@
+import { ConfirmComponent } from './components/dialogs/confirm/confirm.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 
@@ -13,7 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
-  declarations: [AppComponent,  AdminComponent],
+  declarations: [AppComponent,  AdminComponent, ConfirmComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
