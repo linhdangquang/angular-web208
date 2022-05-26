@@ -14,7 +14,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductsComponent implements AfterViewInit, OnInit {
   productsList!: IProduct[];
   titlePage: string = 'Products';
-  displayedColumns: string[] = ['id', 'name', 'price', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'price', 'status' , 'actions'];
   dataSource: MatTableDataSource<IProduct> = new MatTableDataSource(
     this.productsList
   );

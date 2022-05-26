@@ -1,7 +1,7 @@
 <div class="col-lg-6">
   <mat-card>
     <mat-card-title>
-      <h2>Add Product</h2>
+      <h2>{{formTitle}}</h2>
     </mat-card-title>
     <mat-card-content>
       <form
@@ -39,7 +39,7 @@
             Price is <strong>required</strong> 
           </mat-error>
           <mat-error *ngIf="!productForm.hasError('min') && productForm.get('price')?.value < 0">
-            Name is at least <strong>1</strong>
+            Price is at least <strong>1</strong>
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
@@ -53,10 +53,21 @@
           >
           </textarea>
         </mat-form-field>
-        <div class="mb-3 d-grid justify-content-end ">
-          <button mat-raised-button color="primary" [disabled]="productForm.invalid" class="text-uppercase">
-            add
-          </button>
+        <div class="mb-3 justify-content-between align-items-center d-flex">
+          <div>
+            <mat-label>Status:  </mat-label>
+            <mat-radio-group  name="status" formControlName="status" >
+              <mat-radio-button [value]="true" name="status" [checked]="true"  class="me-2">In Stock</mat-radio-button>
+              <mat-radio-button [value]="false" name="status" >Out Stock</mat-radio-button>
+            </mat-radio-group>
+
+          </div>
+          <div>
+            <button mat-raised-button color="primary" [disabled]="productForm.invalid" class="text-uppercase">
+              add
+            </button>
+
+          </div>
         </div>
       </form>
     </mat-card-content>

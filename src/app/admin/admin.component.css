@@ -24,6 +24,6 @@
 }
 
 .mat-list-item.active {
-  background: palevioletred;
-  color: whitesmoke;
+  color:palevioletred;
+  font-weight: 500;
 }

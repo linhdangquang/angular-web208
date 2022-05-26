@@ -3,8 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { DashboardComponent, ProductsComponent } from './pages';
 import { AdminComponent } from './admin.component';
-import { AddProductComponent } from './components/add-product/add-product.component';
-import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { AddProductComponent, ProductDetailComponent } from './components';
 
 const routes: Routes = [
   {
@@ -25,6 +24,10 @@ const routes: Routes = [
         path: 'products/view/:id',
         component: ProductDetailComponent,
       },
+      {
+        path: 'products/edit/:id',
+        component: AddProductComponent,
+      }
     ],
   },
   {path: '404', component: Page404Component},

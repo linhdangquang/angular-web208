@@ -45,6 +45,18 @@ export class ProductsService {
     );
   }
 
+  public putProductRequest(product: IProduct, id: number): Observable<IProduct> {
+    return this.httpClient.put<IProduct>(
+      `${this.REST_API_SERVER}/${id}`,
+      product
+    ).pipe(
+      tap(() =>
+        this.toastr.success(`Product ${product.name} has been updated successfully`)
+      ),
+      catchError(this.handleError)
+    );
+  }
+
   public deleteProductRequest(id: number): Observable<IProduct> {
     return this.httpClient.delete<IProduct>(`${this.REST_API_SERVER}/${id}`).pipe(
       tap(() =>

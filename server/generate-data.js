@@ -1,16 +1,23 @@
-import { faker } from '@faker-js/faker';
+const { faker } = require('@faker-js/faker');
+const fs = require("fs");
 
 
-const database = {
-  products: [],
+
+const generateData = () => {
+  const data = [];
+  for (let i = 0; i < 50; i++) {
+    data.push({
+      id: i,
+      name: faker.commerce.productName(),
+      price: faker.commerce.price(),
+      image: faker.image.food(),
+      description: faker.lorem.paragraph(),
+    status: faker.datatype.boolean(),
+    })
+  }
+  return data;
+
 }
 
-for (let i = 1; i <= 50; i++) {
-  database.products.push({
-    id: i,
-    name: faker.commerce.productName(),
-    price: faker.commerce.price(),
-    description: faker.lorem.sentence(),
-    image: faker.image.food(),
-  })
-}
+
+fs.writeFileSync('./db.json', JSON.stringify({products: generateData()}));
