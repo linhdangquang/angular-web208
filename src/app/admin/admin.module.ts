@@ -1,3 +1,4 @@
+import { AdminComponent } from './admin.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,7 +12,12 @@ import { FormsModule } from '@angular/forms';
 import { AddProductComponent } from './components/add-product/add-product.component';
 
 @NgModule({
-  declarations: [ DashboardComponent, ProductsComponent, ProductDetailComponent, AddProductComponent],
+  declarations: [
+    DashboardComponent,
+    ProductsComponent,
+    ProductDetailComponent,
+    AddProductComponent,
+  ],
   imports: [
     AdminRoutingModule,
     BrowserModule,
@@ -20,7 +26,6 @@ import { AddProductComponent } from './components/add-product/add-product.compon
     MaterialModule,
     BrowserAnimationsModule,
     NgxSkeletonLoaderModule,
-
   ],
   providers: [],
 })

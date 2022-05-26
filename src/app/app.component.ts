@@ -10,7 +10,5 @@ export class AppComponent {
   public constructor (private titleService: Title) {
     this.titleService.setTitle('My App');
   }
-
- 
 }
 

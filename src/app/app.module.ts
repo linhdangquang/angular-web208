@@ -12,9 +12,12 @@ import { AdminModule } from './admin/admin.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { HomeModule } from './home/home.module';
+import { HomeComponent } from './home/home.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [AppComponent,  AdminComponent, ConfirmComponent],
+  declarations: [AppComponent, AdminComponent, ConfirmComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -29,7 +32,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
       closeButton: true,
       progressBar: true,
     }),
-    AdminModule
+    AdminModule,
+    HomeModule,
   ],
   providers: [Title],
   bootstrap: [AppComponent],
