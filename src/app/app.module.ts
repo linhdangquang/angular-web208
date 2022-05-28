@@ -14,7 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { HomeModule } from './home/home.module';
 import { HomeComponent } from './home/home.component';
-import { CommonModule } from '@angular/common';
+import { EllipsisSpinnerComponent } from './components/ellipsis-spinner/ellipsis-spinner.component';
 
 @NgModule({
   declarations: [AppComponent, AdminComponent, ConfirmComponent, HomeComponent],

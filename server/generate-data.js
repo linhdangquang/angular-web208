@@ -5,7 +5,7 @@ const fs = require("fs");
 
 const generateData = () => {
   const data = [];
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 20; i++) {
     data.push({
       id: i,
       name: faker.commerce.productName(),
@@ -20,4 +20,4 @@ const generateData = () => {
 }
 
 
-fs.writeFileSync('./db.json', JSON.stringify({products: generateData()}));
+fs.writeFileSync('db.json', JSON.stringify({products: generateData()}));

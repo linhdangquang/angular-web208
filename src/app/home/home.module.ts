@@ -10,18 +10,21 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ProductsShopComponent } from './pages/products-shop/products-shop.component';
+import { MaterialModule } from '../material.module';
+import { EllipsisSpinnerComponent } from '../components/ellipsis-spinner/ellipsis-spinner.component';
 
 @NgModule({
-  declarations: [NavigationComponent, FooterComponent, ProductsShopComponent],
+  declarations: [NavigationComponent, FooterComponent, ProductsShopComponent, EllipsisSpinnerComponent],
   imports: [
     HomeRoutingModule,
     BrowserModule,
     NgbModule,
     FormsModule,
+    MaterialModule,
     BrowserAnimationsModule,
     NgxSkeletonLoaderModule,
   ],
   providers: [],
-  exports: [NavigationComponent, FooterComponent],
+  exports: [NavigationComponent, FooterComponent, EllipsisSpinnerComponent],
 })
 export class HomeModule {}

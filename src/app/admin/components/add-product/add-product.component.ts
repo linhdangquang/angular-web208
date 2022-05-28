@@ -13,9 +13,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AddProductComponent implements OnInit {
   formTitle = 'Add Product';
   product!: IProduct;
+  numberReg = /^[+-]?((\d+(\.\d*)?)|(\.\d+))$/;
   productForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    price: new FormControl('', [Validators.required, Validators.min(1)]),
+    price: new FormControl('', [Validators.required, Validators.min(1), Validators.pattern(this.numberReg)],),
     description: new FormControl(''),
     status: new FormControl('true', [Validators.required]),
     image: new FormControl('http://loremflickr.com/640/480/food'),

@@ -1,7 +1,7 @@
 <div class="col-lg-6">
   <mat-card>
     <mat-card-title>
-      <h2>{{formTitle}}</h2>
+      <h2>{{ formTitle }}</h2>
     </mat-card-title>
     <mat-card-content>
       <form
@@ -19,27 +19,30 @@
             formControlName="name"
             name="name"
           />
-          <mat-error *ngIf="!productForm.hasError('required') && !productForm.get('name')?.value.length">
-            Name is <strong>required</strong> 
+          <mat-error *ngIf="productForm.get('name')?.hasError('required')">
+            Name is <strong>required</strong>
           </mat-error>
-          <mat-error *ngIf="!productForm.hasError('minlength') && productForm.get('name')?.value">
+          <mat-error *ngIf="productForm.get('name')?.hasError('minlength')">
             Name is at least <strong>6 characters</strong>
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Price</mat-label>
           <input
-            type="number"
+            type="text"
             matInput
             placeholder="Product price"
             formControlName="price"
             name="price"
           />
-          <mat-error *ngIf="!productForm.hasError('required') && !productForm.get('price')?.value">
-            Price is <strong>required</strong> 
+          <mat-error *ngIf="productForm.get('price')?.hasError('required')">
+            Price is <strong>required</strong>
           </mat-error>
-          <mat-error *ngIf="!productForm.hasError('min') && productForm.get('price')?.value < 0">
+          <mat-error *ngIf="productForm.get('price')?.hasError('min')">
             Price is at least <strong>1</strong>
+          </mat-error>
+          <mat-error *ngIf="productForm.get('price')?.hasError('pattern')">
+            Only <strong>Numbers</strong> are allowed
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
@@ -57,18 +60,29 @@
         </mat-form-field>
         <div class="mb-3 justify-content-between align-items-center d-flex">
           <div>
-            <mat-label>Status:  </mat-label>
-            <mat-radio-group  name="status" formControlName="status" >
-              <mat-radio-button [value]="true" name="status" [checked]="true"  class="me-2">In Stock</mat-radio-button>
-              <mat-radio-button [value]="false" name="status" >Out Stock</mat-radio-button>
+            <mat-label>Status: </mat-label>
+            <mat-radio-group name="status" formControlName="status">
+              <mat-radio-button
+                [value]="true"
+                name="status"
+                [checked]="true"
+                class="me-2"
+                >In Stock</mat-radio-button
+              >
+              <mat-radio-button [value]="false" name="status"
+                >Out Stock</mat-radio-button
+              >
             </mat-radio-group>
-
           </div>
           <div>
-            <button mat-raised-button color="primary" [disabled]="productForm.invalid" class="text-uppercase">
+            <button
+              mat-raised-button
+              color="primary"
+              [disabled]="productForm.invalid"
+              class="text-uppercase"
+            >
               add
             </button>
-
           </div>
         </div>
       </form>

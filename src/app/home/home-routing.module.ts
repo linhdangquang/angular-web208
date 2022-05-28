@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Page404Component } from '../utils/page404/page404.component';
 import { HomeComponent } from './home.component';
+import { HomeShopComponent } from './pages/home-shop/home-shop.component';
 import { ProductsShopComponent } from './pages/products-shop/products-shop.component';
 
 const routes: Routes = [
@@ -9,7 +10,10 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    children: [{ path: 'shop', component: ProductsShopComponent }],
+    children: [
+      { path: '', component: HomeShopComponent },
+      { path: 'shop', component: ProductsShopComponent },
+    ],
   },
   { path: '**', component: Page404Component },
 ];
