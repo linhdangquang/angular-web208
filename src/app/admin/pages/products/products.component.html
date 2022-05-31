@@ -1,5 +1,5 @@
 <div>
-  <div class="shadow">
+  <div class="shadow" style="background-color: #fff ;">
     <div class="d-flex justify-content-between align-items-center p-2 pb-0">
       <h1>{{ titlePage }}</h1>
       <button
@@ -17,7 +17,7 @@
       </mat-label>
       <input matInput (keyup)="applyFilter($event)" #input placeholder="Type your product" />
     </mat-form-field>
-
+    
     <table mat-table [dataSource]="dataSource" matSort class="w-100">
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="fw-bolder">

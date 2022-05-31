@@ -1,4 +1,4 @@
-<div class="col-lg-6">
+<div class="col-lg-6 shadow-sm">
   <mat-card>
     <mat-card-title>
       <h2>{{ formTitle }}</h2>
@@ -10,7 +10,7 @@
         #formAdd="ngForm"
         class="d-flex flex-column"
       >
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="standard">
           <mat-label>Name</mat-label>
           <input
             type="text"
@@ -26,7 +26,7 @@
             Name is at least <strong>6 characters</strong>
           </mat-error>
         </mat-form-field>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="standard">
           <mat-label>Price</mat-label>
           <input
             type="text"
@@ -35,6 +35,7 @@
             formControlName="price"
             name="price"
           />
+          <span matSuffix>$&nbsp;</span>
           <mat-error *ngIf="productForm.get('price')?.hasError('required')">
             Price is <strong>required</strong>
           </mat-error>
@@ -45,7 +46,7 @@
             Only <strong>Numbers</strong> are allowed
           </mat-error>
         </mat-form-field>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="standard">
           <mat-label>Description</mat-label>
           <textarea
             type="text"

@@ -1,0 +1,8 @@
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+  background-color: rgb(39, 184, 176) !important;
+}
+
+.mat-raised-button {
+  background-color: rgb(39, 184, 176);
+  color: rgb(255, 255, 255);
+}

@@ -3,3 +3,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap');
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.primary-color { color: rgb(39, 184, 176); }
+.primary-background-color { background-color: rgb(39, 184, 176); }
+.primary-border-color { border-color: rgb(39, 184, 176); }
+.primary-text-color { color: rgb(39, 184, 176); }
+
+.secondary-color { color: rgb(255, 255, 255); }
+.secondary-background-color { background-color: rgb(255, 255, 255); }
+.secondary-border-color { border-color: rgb(255, 255, 255); }
+.secondary-text-color { color: rgb(255, 255, 255); }

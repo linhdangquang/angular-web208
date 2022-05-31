@@ -1,0 +1,107 @@
+<div
+  class="container ps-4 ps-lg-5 my-5 sign-up-form shadow rounded"
+  style="background-color: #f7f8fc"
+>
+  <div class="row">
+    <div class="col-7 py-4">
+      <div class="d-flex justify-content-center flex-column">
+        <h1 class="fw-bolder fs-3">User Registration</h1>
+        <img
+          src="https://cdni.iconscout.com/illustration/premium/thumb/signup-screen-of-e-wallet-app-3323727-2791556.png"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="col-12 col-lg-5 mx-auto" style="background-color: #fff">
+      <mat-tab-group mat-align-tabs="center" mat-stretch-tabs>
+        <mat-tab label="Sign Up">
+          <div class="p-5">
+            <div style="color: #313131" class="fs-4 fw-bold">Sign Up</div>
+            <p class="my-1">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+            <div>
+              <form
+                (ngSubmit)="onSubmit()"
+                [formGroup]="signUpForm"
+                #formAdd="ngForm"
+                class="d-flex flex-column"
+              >
+                <mat-form-field appearance="standard">
+                  <mat-label>Full name</mat-label>
+                  <input
+                    type="text"
+                    matInput
+                    placeholder="Full name"
+                    formControlName="name"
+                    name="name"
+                  />
+                  <mat-error
+                    *ngIf="signUpForm.get('name')?.hasError('required')"
+                  >
+                    Name is <strong>required</strong>
+                  </mat-error>
+                  <mat-error
+                    *ngIf="signUpForm.get('name')?.hasError('minlength')"
+                  >
+                    Name is at least <strong>6 characters</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="standard">
+                  <mat-label>Email</mat-label>
+                  <input
+                    type="text"
+                    matInput
+                    placeholder="Email"
+                    formControlName="email"
+                    name="email"
+                  />
+                  <mat-error
+                    *ngIf="signUpForm.get('email')?.hasError('required')"
+                  >
+                    Email is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="standard">
+                  <mat-label>Password</mat-label>
+                  <input
+                    type="password"
+                    matInput
+                    placeholder="password"
+                    formControlName="password"
+                    name="password"
+                  />
+                  <mat-error
+                    *ngIf="signUpForm.get('password')?.hasError('required')"
+                  >
+                    Password is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+                <div class="my-3">
+                  <mat-checkbox class="example-margin"
+                    ><span style="color: #616161">I have read the </span
+                    ><span
+                      style="font-weight: 500; border-bottom: 1px solid #313131"
+                      >Term and conditions</span
+                    ></mat-checkbox
+                  >
+                </div>
+                <div class="my-3">
+                  <button
+                    mat-raised-button
+                    type="submit"
+                    [disabled]="!signUpForm.valid"
+                    class="mb-3 justify-content-center align-items-center d-grid col-12"
+                  >
+                    Register
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Sign In">Content 2</mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
