@@ -1,0 +1,12 @@
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.nav-link {
+  font-size: 18px;
+}
+
+.nav-link.active {
+  font-weight: bold;
+}
