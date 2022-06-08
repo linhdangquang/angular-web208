@@ -6,3 +6,6 @@
   background-color: rgb(39, 184, 176);
   color: rgb(255, 255, 255);
 }
+::ng-deep .mat-tab-content { 
+  overflow: hidden !important;
+}

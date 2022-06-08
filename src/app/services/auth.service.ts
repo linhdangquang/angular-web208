@@ -17,24 +17,25 @@ export class AuthService {
       errorMessage = `Error: ${error.error.message}`;
     } else {
       // Server-side errors
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.error}`;
+      alert(error.error);
     }
     return throwError(() => errorMessage);
   }
   public signUpRequest(user: IUser): Observable<IUser> {
-    return this.httpClient.post<IUser>(`${this.REST_API_SERVER}/signup`, user).pipe(
-      tap(() =>
-        this.toastr.success(`Sign up successfully!`)
-      ),
-      catchError(this.handleError)
-    );
+    return this.httpClient
+      .post<IUser>(`${this.REST_API_SERVER}/signup`, user)
+      .pipe(
+        tap(() => this.toastr.success(`Sign up successfully!`)),
+        catchError(this.handleError)
+      );
   }
   public signInRequest(user: IUser): Observable<IUser> {
-    return this.httpClient.post<IUser>(`${this.REST_API_SERVER}/signin`, user).pipe(
-      tap(() =>
-        this.toastr.success(`Sign in successfully!`)
-      ),
-      catchError(this.handleError)
-    );
+    return this.httpClient
+      .post<IUser>(`${this.REST_API_SERVER}/signin`, user)
+      .pipe(
+        tap(() => this.toastr.success(`Sign in successfully!`)),
+        catchError(this.handleError)
+      );
   }
 }

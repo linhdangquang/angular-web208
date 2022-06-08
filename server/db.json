@@ -162,6 +162,12 @@
     }
   ],
   "users": [
-    
+    {
+      "email": "linh@gmail.com",
+      "password": "$2a$10$tZVBI9GDFulqTNY1zcQcE.BAH8he9oPb1Ay72zTEkQMTWMSi95Uyu",
+      "name": "Quang Linh",
+      "role": 1,
+      "id": 1
+    }
   ]
 }

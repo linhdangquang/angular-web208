@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="col-12 col-lg-5 mx-auto" style="background-color: #fff">
-      <mat-tab-group mat-align-tabs="center" mat-stretch-tabs>
+      <mat-tab-group mat-align-tabs="center" mat-stretch-tabs dynamicHeight>
         <mat-tab label="Sign Up">
           <div class="p-5">
             <div style="color: #313131" class="fs-4 fw-bold">Sign Up</div>
@@ -22,7 +22,7 @@
             </p>
             <div>
               <form
-                (ngSubmit)="onSubmit()"
+                (ngSubmit)="onSignUpHandler()"
                 [formGroup]="signUpForm"
                 #formAdd="ngForm"
                 class="d-flex flex-column"
@@ -60,6 +60,9 @@
                     *ngIf="signUpForm.get('email')?.hasError('required')"
                   >
                     Email is <strong>required</strong>
+                  </mat-error>
+                  <mat-error *ngIf="signUpForm.get('email')?.hasError('email')">
+                    Email is <strong>invalid</strong>
                   </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="standard">
@@ -100,7 +103,66 @@
             </div>
           </div>
         </mat-tab>
-        <mat-tab label="Sign In">Content 2</mat-tab>
+        <mat-tab label="Sign In">
+          <div class="p-5">
+            <div style="color: #313131" class="fs-4 fw-bold">Sign In</div>
+            <p class="my-1">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+            <div>
+              <form
+                (ngSubmit)="onSignInHandler()"
+                [formGroup]="signInForm"
+                #formAdd="ngForm"
+                class="d-flex flex-column"
+              >
+                <mat-form-field appearance="standard">
+                  <mat-label>Email</mat-label>
+                  <input
+                    type="text"
+                    matInput
+                    placeholder="Email"
+                    formControlName="email"
+                    name="email"
+                  />
+                  <mat-error
+                    *ngIf="signInForm.get('email')?.hasError('required')"
+                  >
+                    Email is <strong>required</strong>
+                  </mat-error>
+                  <mat-error *ngIf="signInForm.get('email')?.hasError('email')">
+                    Email is <strong>invalid</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="standard">
+                  <mat-label>Password</mat-label>
+                  <input
+                    type="password"
+                    matInput
+                    placeholder="password"
+                    formControlName="password"
+                    name="password"
+                  />
+                  <mat-error
+                    *ngIf="signInForm.get('password')?.hasError('required')"
+                  >
+                    Password is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+                <div class="my-3">
+                  <button
+                    mat-raised-button
+                    type="submit"
+                    [disabled]="!signInForm.valid"
+                    class="mb-3 justify-content-center align-items-center d-grid col-12"
+                  >
+                    Sign In
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </mat-tab>
       </mat-tab-group>
     </div>
   </div>

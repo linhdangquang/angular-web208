@@ -146,8 +146,11 @@
     </div>
     <div class="">
       <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!user">
           <a class="nav-link" routerLink="sign-up">Sign In</a>
+        </li>
+        <li class="nav-item" *ngIf="user">
+          <p class="nav-link" (click)="logOut()" >Logout</p>
         </li>
       </ul>
     </div>
