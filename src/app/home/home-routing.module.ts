@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Page404Component } from '../utils/page404/page404.component';
 import { HomeComponent } from './home.component';
 import { HomeShopComponent } from './pages/home-shop/home-shop.component';
+import { ProductSingleComponent } from './pages/product-single/product-single.component';
 import { ProductsShopComponent } from './pages/products-shop/products-shop.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 
@@ -14,6 +15,7 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeShopComponent },
       { path: 'shop', component: ProductsShopComponent },
+      { path: 'shop/:id', component: ProductSingleComponent },
       { path: 'sign-up', component: SignUpComponent },
     ],
   },

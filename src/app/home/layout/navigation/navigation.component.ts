@@ -2,7 +2,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { IUser } from './../../../models/auth.model';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { map, Observable, shareReplay } from 'rxjs';
 
 @Component({
@@ -20,7 +20,11 @@ export class NavigationComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router, private toastr: ToastrService) {
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private router: Router,
+    private toastr: ToastrService
+  ) {
     if (this.user) {
       this.router.navigate(['/']);
     }

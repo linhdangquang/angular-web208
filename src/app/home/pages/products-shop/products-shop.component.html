@@ -26,12 +26,16 @@
               Sale
             </div>
             <!-- Product image-->
-            <img class="card-img-top" src="{{ product.image }}" alt="..." />
+            <a [routerLink]="['/shop', product.id]"            >
+              <img class="card-img-top" src="{{ product.image }}" alt="..."
+            /></a>
             <!-- Product details-->
             <div class="card-body p-4">
               <div class="text-center">
                 <!-- Product name-->
-                <h5 class="fw-bolder">{{ product.name }}</h5>
+                <h5 class="fw-bolder">
+                  <a class="text-dark text-decoration-none" [routerLink]="['/shop', product.id]">{{ product.name }}</a>
+                </h5>
                 <!-- Product reviews-->
                 <div
                   class="d-flex justify-content-center small text-warning mb-2"
