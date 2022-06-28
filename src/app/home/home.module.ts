@@ -12,10 +12,10 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ProductsShopComponent } from './pages/products-shop/products-shop.component';
 import { MaterialModule } from '../material.module';
 import { EllipsisSpinnerComponent } from '../components/ellipsis-spinner/ellipsis-spinner.component';
-import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { AuthenticationComponent} from './pages/authentication/authentication.component';
 
 @NgModule({
-  declarations: [NavigationComponent, FooterComponent, ProductsShopComponent, EllipsisSpinnerComponent, SignUpComponent],
+  declarations: [NavigationComponent, FooterComponent, ProductsShopComponent, EllipsisSpinnerComponent, AuthenticationComponent],
   imports: [
     HomeRoutingModule,
     BrowserModule,

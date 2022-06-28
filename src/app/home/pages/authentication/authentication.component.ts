@@ -1,41 +1,55 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { IUser } from 'src/app/models/auth.model';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css'],
+  templateUrl: './authentication.component.html',
+  styleUrls: ['./authentication.component.css'],
 })
-export class SignUpComponent implements OnInit {
-  signUpForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(6),
-    ]),
-    role: new FormControl(0, [Validators.required]),
-  });
-  signInForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(6),
-    ]),
-  });
+
+
+
+export class AuthenticationComponent implements OnInit {
+  signUpForm !: FormGroup;
+  signInForm !: FormGroup;
+  tabIndex: TabsForm = TabsForm.SignIn;
   constructor(
     private titleService: Title,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) {
     this.titleService.setTitle('Sign Up');
   }
+ 
+  
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.initForm();
+  }
+
+  initForm() {
+    this.signInForm = this.fb.group({
+       email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+    this.signUpForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(6)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      role: [0, [Validators.required]],
+    })
+  }
+
   onSignUpHandler() {
     if (this.signUpForm.invalid) {
       console.log('Invalid Form');
@@ -45,6 +59,7 @@ export class SignUpComponent implements OnInit {
       .signUpRequest(this.signUpForm.value)
       .subscribe((data: IUser) => {
         console.log(data);
+        this.tabIndex = TabsForm.SignIn;
       });
   }
   onSignInHandler() {
@@ -64,4 +79,9 @@ export class SignUpComponent implements OnInit {
         }
       });
   }
+}
+
+enum TabsForm {
+  SignUp = 0,
+  SignIn = 1
 }

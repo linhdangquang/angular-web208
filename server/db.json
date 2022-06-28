@@ -159,6 +159,14 @@
       "image": "http://loremflickr.com/640/480/food",
       "description": "Est suscipit officia aut dolore. Incidunt eum suscipit quibusdam. Sit ut eligendi et delectus laboriosam distinctio dolores.",
       "status": false
+    },
+    {
+      "name": "Test 123123",
+      "price": "90088908908890890",
+      "description": "iojioasdjasiojdasiodjiad\ndasdioasdjasiodjaio\nasdj",
+      "status": "true",
+      "image": "http://loremflickr.com/640/480/food",
+      "id": 20
     }
   ],
   "users": [
@@ -168,6 +176,20 @@
       "name": "Quang Linh",
       "role": 1,
       "id": 1
+    },
+    {
+      "email": "testsignup@gmail.com",
+      "password": "$2a$10$wb.zwgWLb1FHHd2gJblcdu8sV6Z6Be2SxzDKv163CcBh8g8Q2TZhG",
+      "name": "Test dang ky",
+      "role": 0,
+      "id": 2
+    },
+    {
+      "email": "testdangky@gmail.com",
+      "password": "$2a$10$iXltISzeYbtlErLN.j5MCOtEnVW8qS4OTdt0BUt/rNp3.tj41Is4W",
+      "name": "testdangky",
+      "role": 0,
+      "id": 3
     }
   ]
 }
