@@ -43,7 +43,10 @@ export class AuthService {
       .post<IUser>(`${this.REST_API_SERVER}/signup`, user, httpOptions)
       .pipe(
         tap(() => this.toastr.success(`Sign up successfully!`)),
-        catchError(this.handleError)
+        catchError((error: HttpErrorResponse) => {
+          this.toastr.error(error.error);
+          return throwError(error);
+        })
       );
   }
   public signInRequest(user: IUser): Observable<IUser> {
@@ -51,16 +54,20 @@ export class AuthService {
       .post<IUser>(`${this.REST_API_SERVER}/signin`, user, httpOptions)
       .pipe(
         tap((user: any) => {
-          localStorage.setItem('access_token', (user.accessToken));
+          localStorage.setItem('access_token', user.accessToken);
           localStorage.setItem('user', JSON.stringify(user));
           this.currentUser = user;
           this.toastr.success(`Sign in successfully!`);
           return user;
+        }),
+        catchError((error: HttpErrorResponse) => {
+          this.toastr.error(error.error);
+          return throwError(error);
         })
       );
   }
 
-  public getToken(){
+  public getToken() {
     return localStorage.getItem('access_token');
   }
 

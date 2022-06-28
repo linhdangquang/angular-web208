@@ -2,7 +2,7 @@
   class="container ps-4 ps-lg-5 my-5 sign-up-form shadow rounded"
   style="background-color: #f7f8fc"
 >
-  <div class="row" style="min-height: 75vh ;" >
+  <div class="row" style="min-height: 75vh">
     <div class="col-7 py-5">
       <div class="d-flex justify-content-center flex-column">
         <h1 class="fw-bolder fs-3">User Registration</h1>
@@ -13,7 +13,12 @@
       </div>
     </div>
     <div class="col-12 col-lg-5 mx-auto" style="background-color: #fff">
-      <mat-tab-group mat-align-tabs="center" [selectedIndex]="tabIndex" mat-stretch-tabs dynamicHeight>
+      <mat-tab-group
+        mat-align-tabs="center"
+        [selectedIndex]="tabIndex"
+        mat-stretch-tabs
+        dynamicHeight
+      >
         <mat-tab label="Sign Up">
           <div class="p-5">
             <div style="color: #313131" class="fs-4 fw-bold">Sign Up</div>
@@ -81,13 +86,20 @@
                   </mat-error>
                 </mat-form-field>
                 <div class="my-3">
-                  <mat-checkbox class="example-margin"
+                  <mat-checkbox
+                    formControlName="checkBox"
+                    class="example-margin"
                     ><span style="color: #616161">I have read the </span
                     ><span
                       style="font-weight: 500; border-bottom: 1px solid #313131"
                       >Term and conditions</span
                     ></mat-checkbox
                   >
+                  <mat-error
+                    *ngIf="signUpForm.get('checkBox')?.hasError('requiredTrue')"
+                  >
+                    You must accept the terms and conditions
+                  </mat-error>
                 </div>
                 <div class="my-3">
                   <button
