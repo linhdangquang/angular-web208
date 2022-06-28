@@ -13,9 +13,10 @@ import { ProductsShopComponent } from './pages/products-shop/products-shop.compo
 import { MaterialModule } from '../material.module';
 import { EllipsisSpinnerComponent } from '../components/ellipsis-spinner/ellipsis-spinner.component';
 import { AuthenticationComponent} from './pages/authentication/authentication.component';
+import { Page404Component } from '../utils/page404/page404.component';
 
 @NgModule({
-  declarations: [NavigationComponent, FooterComponent, ProductsShopComponent, EllipsisSpinnerComponent, AuthenticationComponent],
+  declarations: [NavigationComponent, FooterComponent, ProductsShopComponent, EllipsisSpinnerComponent, AuthenticationComponent, Page404Component],
   imports: [
     HomeRoutingModule,
     BrowserModule,

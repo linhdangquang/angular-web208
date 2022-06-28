@@ -4,6 +4,7 @@ import { IUser } from './../../../models/auth.model';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
 import { map, Observable, shareReplay } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navigation',
@@ -23,16 +24,16 @@ export class NavigationComponent {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private authService: AuthService
   ) {
     if (this.user) {
       this.router.navigate(['/']);
     }
   }
   logOut() {
-    localStorage.removeItem('user');
+    this.authService.logOut();
     this.user = null as any;
     this.router.navigate(['/']);
-    this.toastr.success('Log out successfully!');
   }
 }

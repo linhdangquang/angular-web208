@@ -9,12 +9,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { AdminComponent } from './admin/admin.component';
 import { AdminModule } from './admin/admin.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { HomeModule } from './home/home.module';
 import { HomeComponent } from './home/home.component';
 import { EllipsisSpinnerComponent } from './components/ellipsis-spinner/ellipsis-spinner.component';
+import { AuthInterceptor } from './helpers/authconfig.interceptor';
 
 @NgModule({
   declarations: [AppComponent, AdminComponent, ConfirmComponent, HomeComponent],
@@ -35,7 +36,11 @@ import { EllipsisSpinnerComponent } from './components/ellipsis-spinner/ellipsis
     AdminModule,
     HomeModule,
   ],
-  providers: [Title],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true,
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

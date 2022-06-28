@@ -70,7 +70,6 @@ export class AuthenticationComponent implements OnInit {
     this.authService
       .signInRequest(this.signInForm.value)
       .subscribe((data: any) => {
-        localStorage.setItem('user', JSON.stringify(data));
         console.log(data.user.role);
         if (data.user.role === 1) {
           this.router.navigate(['/admin']);
